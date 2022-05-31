@@ -1,0 +1,28 @@
+@import '../../common_styles/colors.scss';
+.submit-button-container {
+  margin-top: 2rem;
+  width: 100%;
+
+  .submit-button {
+    width: 100%;
+    min-height: 2rem;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: .75rem;
+    transition: ease .3s;
+    background-color: $peach-orange;
+    color: white;
+    box-shadow: 5px 5px 15px lightgrey;
+
+    &:hover {
+      background-color: $dark-peach-orange;
+      color: white;
+      cursor: pointer;
+
+    }
+  }
+}

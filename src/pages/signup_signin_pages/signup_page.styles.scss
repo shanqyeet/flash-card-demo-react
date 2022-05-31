@@ -1,0 +1,47 @@
+@import '../../common_styles/colors.scss';
+
+.form-container {
+  min-width: 50%;
+  max-width:  60rem;
+  min-height: 40rem;
+  background-color: $dark-peach-white;
+  padding: 1.5rem;
+  box-shadow: 15px 15px 30px rgba(200, 200, 200, 0.8);
+  border-radius: 30px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+  }
+
+  .signup-form {
+    margin-bottom: 1rem;
+  }
+
+  .links-container {
+    display: flex;
+    flex-direction: column;
+    
+    a {
+      text-decoration: none;
+      color: block;
+      margin: .25rem;
+      transition: ease .2s;
+      line-height: 1.5rem;
+
+      &:active, &:visited {
+        color: black;
+      }
+
+      &:hover {
+        color: $dark-golden-rod;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+

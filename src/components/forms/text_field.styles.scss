@@ -1,0 +1,29 @@
+.converter-form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  .field-label {
+    padding-bottom: .25rem;
+    font-size: 1.15rem;
+    font-weight: 300;
+    margin-bottom: .25rem;
+  }
+
+  .field-input  {
+    text-align: center;
+    min-height: 1.5rem;
+    border: none;
+    margin-bottom: .5rem;
+    font-size: 1.15rem;
+    padding: .5rem .5rem .25rem .5rem;
+    border-radius: 10px;
+
+    &:focus {
+      outline: none;
+      background-color: whitesmoke;
+    
+    }
+  }
+}
