@@ -18,8 +18,8 @@ import { userSigin } from '../../adapters/flash_game_users.adapter';
 const SigninPage = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({username: "", password: ""});
-    const [currentUser, setCurrentUser] = useState(() => constructUserFromCookies());
     const [isLoading, setIsLoading] = useState(false);
+    const [currentUser, setCurrentUser] = useState(() => constructUserFromCookies());
     const [errorMessage, setErrorMessage] = useState("");
 
     const onFormFieldChange = (event) => {
@@ -36,15 +36,16 @@ const SigninPage = () => {
         let {username, password} = formData;
         await userSigin(username, password)
         .then((response)=>{
-            let isSuccess = response.data.success;
-            if (isSuccess) {
-                let accessToken = response.data.data.access_token;
-                let expiresInSeconds = response.data.data.expires_in;
-                let expiresInDate = new Date(new Date().getTime() + expiresInSeconds * 1000);
+            console.log("Logging in");
+            console.log(response);
+            if (response.data.success) {
+                console.log("Login Success!");
+
+                let accessToken = response.data.token;
+                let expiresInDate = new Date(new Date().getTime() + 36000000);
 
                 cookie.set("accessToken", accessToken, {expires: expiresInDate});
                 cookie.set("username", username, {expires: expiresInDate});
-
                 setCurrentUser(constructUserFromCookies());
                 navigate('/dashboard')
             } else {
