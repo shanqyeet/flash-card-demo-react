@@ -32,7 +32,6 @@ const Dashboard = () => {
       let token = currentUser.accessToken;
       getLeaderBoard(token)
         .then(resp => {
-          console.log(resp.data);
           let data = resp.data
           let easy = data.easy;
           let medium = data.medium;

@@ -36,11 +36,7 @@ const SigninPage = () => {
         let {username, password} = formData;
         await userSigin(username, password)
         .then((response)=>{
-            console.log("Logging in");
-            console.log(response);
             if (response.data.success) {
-                console.log("Login Success!");
-
                 let accessToken = response.data.token;
                 let expiresInDate = new Date(new Date().getTime() + 36000000);
 

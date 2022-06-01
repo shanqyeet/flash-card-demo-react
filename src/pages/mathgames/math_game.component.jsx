@@ -128,7 +128,6 @@ const MathGame = () => {
           let data = resp.data;
           let totalScore = data.totalScore;
           let totalPenalty = data.totalPenalty;
-          console.log("IS PASSED");
           if(isPassed) {
             alert("Congrats! You got it right");
           } else {
@@ -151,7 +150,6 @@ const MathGame = () => {
       completeChallenge(token)
         .then(resp => {
           let data = resp.data;
-          console.log(data);
           let totalScore = data.totalScore;
           let correctAnswerRate = data.correctAnswerRate;
           let averageAnswerTime = data.averageAnswerTime;
@@ -233,7 +231,6 @@ const MathGame = () => {
     }
 
     const renderPausedGame = () => {
-      console.log(currentScores);
       return(
         <div className="game-paused-container">
           <div className="paused-game-image-container">

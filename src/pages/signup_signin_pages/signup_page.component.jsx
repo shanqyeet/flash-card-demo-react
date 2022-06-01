@@ -59,7 +59,6 @@ const SignupPage = (props) => {
     await userSignup(username, password, confirmPassword, avatarUrl)
       .then((response) => {
         let responseData = response.data;
-        console.log(responseData);
         if(responseData) {
           navigate('/')
           alert("Hooooray! successful created your user record. Start game with your new username: " + responseData.username);

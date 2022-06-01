@@ -3,7 +3,6 @@ const BACK_END_URL = "http://localhost:8080/api";
 const FRONT_END_URL = "http://localhost:3000";
 
 export const getChallenge = (token, isNewGame, gameDifficulty) => {
-  console.log("THE TOKEN: " + token);
   return axios.post(BACK_END_URL + "/math/challenge/new", {
     "isNewGame": isNewGame,
     "gameDifficulty": gameDifficulty
@@ -12,7 +11,7 @@ export const getChallenge = (token, isNewGame, gameDifficulty) => {
       "Authorization": token,
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,Authorization"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"  
       }
   });
 };
