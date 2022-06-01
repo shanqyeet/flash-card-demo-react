@@ -11,7 +11,7 @@ import { userSignout } from '../../adapters/flash_game_users.adapter';
 
 import startGameSticker from '../../assets/let-your-ideas-flow.png';
 import continueGameSticker from '../../assets/drawing.png';
-import { checkOnGoingChallenge } from '../../adapters/flash_game_math_game.adapter';
+import { checkOnGoingChallenge, getLeaderBoard } from '../../adapters/flash_game_math_game.adapter';
 
 const Dashboard = () => {
     let API_URL = "https://source.boringavatars.com/beam"; 
@@ -20,12 +20,29 @@ const Dashboard = () => {
     const [hasOnGoingGame, setHasOnGoingGame] = useState(false);
     const [currentUser, setCurrentUser] = useState(() => constructUserFromCookies());
     const [avatarElement, setAvatarElement] = useState("");
+    const [leaderBoard, setLeaderBoard] = useState({easy:[], medium:[], hard:[]});
 
     useEffect(() => {
       if(currentUser.username){
         getAvatarOrDefault(currentUser.username);
       }
     },[currentUser]);
+
+    useEffect(() =>{
+      let token = currentUser.accessToken;
+      getLeaderBoard(token)
+        .then(resp => {
+          console.log(resp.data);
+          let data = resp.data
+          let easy = data.easy;
+          let medium = data.medium;
+          let hard = data.hard;
+          setLeaderBoard({easy: easy, medium: medium, hard: hard})
+        }).catch(err => {
+           console.log("Error gettign leader board");
+           console.log(err);
+        })
+    },[])
 
     useEffect(() => {
       let token = currentUser.accessToken;
@@ -61,21 +78,68 @@ const Dashboard = () => {
       navigate("/game", {state:{status: "ON_GOING"}});
     }
 
+    const mapScores = (scores) => {
+        scores.map(score =>{
+          return(
+            <div className="score-cards">
+              {/* <div>{score.username}</div> */}
+              <div>{score.score}</div>
+              <div>{score.penalty}</div>
+              <div>{score.averageAnswerTimeInMillis/1000}</div>
+            </div>
+          )
+        })
+    }
+
+    const renderLeaderboard = (leaderboard) => {
+        if(leaderboard.length == 0) {
+          return(
+            <div className="leaderboard-empty">Looks like no one here yet, be the first! ;)</div>
+          )
+        } else {
+          return leaderboard.map(score =>{
+            return(
+              <div className="score-cards">
+                <div className='score-card-username'>Username: {score.username}</div>
+                <div className='score-card-score'>Score: {score.score}</div>
+                <div className='score-card-penalty'>Penalty: {score.penalty}</div>
+                <div className='score-card-average-answer-time'>Average Answer Speed: {score.averageAnswerTimeInMillis/1000}</div>
+              </div>
+            )
+          })
+        }
+    }
+
     return(
     <div>
       <div className="dashboard-page">
         <div className="left-container">
-          <h3>Check Out How Your Friends Are Doing</h3>
-          <div className="leaderboard-hard"></div>
-          <div className="leaderboder-medium"></div>
-          <div className="leaderboard-easy"></div>
+          <h3 className='leaderboard-title'>Check Out How Your Friends Are Doing</h3>
+          <div className="leaderboard leaderboard-hard">
+            <h3 className='leaderboard-subtitle'>Top Scorers on Hard Difficulty</h3>
+            <div className="score-cards-container">
+              {renderLeaderboard(leaderBoard.hard)}
+            </div>
+          </div>
+          <div className="leaderboard leaderboder-medium">
+            <h3 className='leaderboard-subtitle'>Top Scorers on Medium Difficulty</h3>
+            <div className="score-cards-container">
+              {renderLeaderboard(leaderBoard.medium)}
+            </div>
+          </div>
+          <div className="leaderboard leaderboard-easy">
+            <h3 className='leaderboard-subtitle'>Top Scorers on Easy Difficulty</h3>
+            <div className="score-cards-container">
+              {renderLeaderboard(leaderBoard.easy)}
+            </div>
+          </div>
           <img className='dashboard-background' src={backgroundImage} />
         </div>
         <div className="right-container">
             <div className='user-avatar'>
               <button className="user-logout" onClick={handleSignout}>Lougout</button>
               <p className='user-username'>Hello there, {currentUser.username}</p>     
-              <div class="user-logo" dangerouslySetInnerHTML={{__html: avatarElement}} />
+              <div className="user-logo" dangerouslySetInnerHTML={{__html: avatarElement}} />
             </div>
             <div className="start-new-game-button" onClick={navigateNewGame}>
               <img className='start-game-sticker' src={startGameSticker}/>

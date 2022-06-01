@@ -12,7 +12,7 @@ export const getChallenge = (token, isNewGame, gameDifficulty) => {
       "Authorization": token,
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
   });
 };
@@ -24,14 +24,12 @@ export const checkOnGoingChallenge = (token) => {
       "Authorization": token,
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
     });
 };
 
 export const submitChallengeResult = (token, isChallengePassed, answerTimeInMillis) => {
-  console.log("IS CHALLENGE PASSED?" + isChallengePassed);
-  alert("");
   return axios
     .post(BACK_END_URL + "/math/challenge/result", {
       "challengePassed": isChallengePassed ? 1 : 0,
@@ -41,7 +39,7 @@ export const submitChallengeResult = (token, isChallengePassed, answerTimeInMill
       "Authorization": token,
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
     });
 };
@@ -54,7 +52,7 @@ export const completeChallenge = (token) => {
       "Authorization": token,
       "Access-Control-Allow-Origin": FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
     });
 };
@@ -67,7 +65,7 @@ export const getLeaderBoard = (token) => {
       "Authorization": token,
       "Access-Control-Allow-Origin": FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
     });
 };

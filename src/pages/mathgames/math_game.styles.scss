@@ -16,8 +16,15 @@
     width: 100%;
     height: 5rem;
     display: flex;
+    background-color: $dark-pink-peach;
+    border-bottom: 1.5px $peach-orange solid;
     justify-content: space-between;
+    align-items: center;
     padding: .5rem;
+
+    .difficulty-level {
+      font-size: 2rem;
+    }
     .user-avatar {
       display: flex;
       justify-content: space-between;
@@ -72,6 +79,7 @@
   }
 
   &-bottom-container {
+    padding-top: 3rem;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -83,7 +91,8 @@
         justify-content: space-between;
         padding: 2rem;
         border-radius: 30px;
-        background-color: $dark-pink-peach;
+        background-color: $cherry-red;
+        color: $peach-white;
 
         .total-scores, .percentage-correct, .average-answer-speed {
           width:   33%;
@@ -129,95 +138,105 @@
             text-decoration: underline;
             transform: scale(1.02);
           }
-
-
-
         }
-
       }
-
-
-      .game-outcome-bottom-container {
-
-      }
-
     }
 
     .game-challege-container {
       display: flex;
-      justify-content: center;
       font-family: Arial, Helvetica, sans-serif;
-      .first-num, .second-num, .submit-challenge-result-form  {
-        color: $cherry-red;
+      flex-direction: column;
+      align-items: center;
+      
+      .game-challenge-top-container {
         display: flex;
-        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 2rem;
         justify-content: center;
-        padding: 2rem;
-        margin: 2rem;
-        width: 13rem;
-        height: 18rem;
-        background-color: white;
         text-align: center;
-        border-radius: 15px;
-        font-size: 12rem;
-        box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+
+        .countdown-warning {
+          color: red;
+          transform: scale(1.05);
+        }
       }
 
-      .operator, .equal {
+      .game-challenge-bottom-container {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        margin: .5rem;
-        height: 18rem;
-        text-align: center;
-        font-size: 8rem;
-        color: brown;
-
-      }
-
-      .user-input-form.submit-challenge-result-form {
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 18rem;
-
-        .user-result-input {
-          height: 75%;
-          width: 100%;
-          border-radius: 15px;
-          border: none;
-          font-size: 10rem;
+        .first-num, .second-num, .submit-challenge-result-form  {
+          color: $cherry-red;
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          margin: 2rem;
+          width: 13rem;
+          height: 18rem;
+          background-color: white;
           text-align: center;
-
-          &:focus {
-            outline: none;
-            border: none;
-            background-color: $peach-white;
-          }
+          border-radius: 15px;
+          font-size: 12rem;
+          box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
         }
 
-        .submit-button {
-          height: 2rem;
-          width: 100%;
-          border-radius: 5px;
-          background-color: $peach-orange;
-          color: $peach-white;
-          border: none;
-          margin-top: 1rem;
-          padding: 0.15rem 2rem;
+        .operator, .equal {
           display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          margin: .5rem;
+          height: 18rem;
+          text-align: center;
+          font-size: 8rem;
+          color: brown;
+
+        }
+
+        .user-input-form.submit-challenge-result-form {
+          flex-direction: column;
           justify-content: center;
           align-items: center;
+          width: 18rem;
 
-          &:hover {
-            cursor: pointer;
-            background-color: $dark-peach-orange;
+          .user-result-input {
+            height: 75%;
+            width: 100%;
+            border-radius: 15px;
+            border: none;
+            font-size: 10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            &:focus {
+              outline: none;
+              border: none;
+              background-color: $peach-white;
+            }
           }
 
+          .submit-button {
+            height: 2rem;
+            width: 100%;
+            border-radius: 5px;
+            background-color: $peach-orange;
+            color: $peach-white;
+            border: none;
+            margin-top: 1rem;
+            padding: 0.15rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              cursor: pointer;
+              background-color: $dark-peach-orange;
+            }
+
+          }
         }
       }
     }
@@ -229,19 +248,6 @@
       text-shadow: 3px 3px 3px lightpink;
       font-size: 1.5rem;
       text-align: center;
-
-      .current-scores-container {
-        display: flex;
-        justify-content: center;
-        .total-scores, .total-penalties {
-          margin: 0 5rem;
-          > h1 {
-            margin: 0;
-            font-size: 10rem;
-          }
-        }
-
-      }
 
       .game-paused-next-challenge-button {
         padding: 1rem 2.5rem;
@@ -271,8 +277,8 @@
         width: 15rem;
         height: 15rem;
         margin: 2rem;
+        background-color: $dark-peach;
         border-radius: 30px;
-        background-color: $peach-orange;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -287,6 +293,7 @@
           transform: scale(1.08);
           cursor: pointer;
           box-shadow: 5px 5px 10px rgb(166, 162, 166);
+          background-color: $cherry-red;
         }
 
         .difficulty-title {

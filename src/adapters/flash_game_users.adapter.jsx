@@ -13,7 +13,7 @@ export const userSignup = (username, password, confirmPassword, avatarUrl) => {
     { headers: {
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
   });
 };
@@ -27,7 +27,7 @@ export const userSigin = (username, password) => {
     { headers: {
       'Access-Control-Allow-Origin': FRONT_END_URL,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+      "Access-Control-Allow-Headers": "Content-Type,Authorization"
       }
     });
 };
@@ -36,7 +36,4 @@ export const userSignout = () => {
   console.log("clearning cookies");
   cookie.set("accessToken", null);
   cookie.set("username", null);
-  // cookie.remove("username", {path:"/dashboard", domain:"localhost" })
-  // cookie.remove("accessToken", {path:"/dashboard", domain:"localhost" })
-  // localStorage.removeItem("user");
 };
