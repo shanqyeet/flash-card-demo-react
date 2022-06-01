@@ -9,6 +9,7 @@ import PrivateRoute from './components/custom_routings/private_route.components'
 import './App.css';
 import SignupPage from './pages/signup_signin_pages/signup_page.component';
 import Dashboard from './pages/mathgames/dashboard.component';
+import MathGame from './pages/mathgames/math_game.component';
 
 function App() {
   return (
@@ -29,6 +30,12 @@ function App() {
           <Dashboard/>
         </PrivateRoute>
        }/>
+       <Route path="/game" element={
+        <PrivateRoute>
+          <MathGame/>
+        </PrivateRoute>
+       }/>
+
       {/*
       <Route path="/dashboard" element={
         <PrivateRoute>

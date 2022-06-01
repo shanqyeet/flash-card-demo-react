@@ -1,0 +1,305 @@
+@import "../../common_styles/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+.game-page {
+  position: relative;
+  background-color: $pink-peach;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: content-box;
+  font-family: 'Gochi Hand', cursive;
+
+  &-top-container {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    .user-avatar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5rem;
+
+      .user-logout {
+
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 0.25rem 1rem; 
+        border-radius: 15px;
+        transition: 0.3s ease;
+        margin: 0.5rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: darkred;
+
+        }
+
+      }
+
+      .user-username {
+        padding: 0.25rem;
+        margin: 0.5rem;
+
+      }
+    }
+    .game-challenge-complete-button-container {
+      display: flex;
+      padding: .5rem;
+      justify-content: flex-start;
+      align-items: center;
+
+      .complete-game-button {
+        background: none;
+        font-size: 1.5rem;
+        border: none;
+        transition: 0.3s ease;
+
+        &:hover {
+          color: red;
+          cursor: pointer;
+          transform: scale(1.015);
+        }
+      }
+
+
+    }
+  }
+
+  &-bottom-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    .game-outcome-container{
+      .game-outcome-top-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        border-radius: 30px;
+        background-color: $dark-pink-peach;
+
+        .total-scores, .percentage-correct, .average-answer-speed {
+          width:   33%;
+          margin: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+        }
+
+        .report-outcome-output {
+          font-size: 8rem;
+          text-align: center;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .report-outcome-title {
+          font-size: 1.5rem;
+          font-weight: 300;
+          text-align: center;
+          word-break: break-all;
+          margin-top: 1.5rem;
+        }
+
+      }
+
+      .game-outcome-bottom-container {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        .game-outcome-exit-button {
+          border: none;
+          background-color: none;;
+          background: none;
+          font-size: 1.5rem;
+          transition: .3s ease;
+
+          &:hover {
+            cursor: pointer;
+            color: $dark-peach-orange;
+            text-decoration: underline;
+            transform: scale(1.02);
+          }
+
+
+
+        }
+
+      }
+
+
+      .game-outcome-bottom-container {
+
+      }
+
+    }
+
+    .game-challege-container {
+      display: flex;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      .first-num, .second-num, .submit-challenge-result-form  {
+        color: $cherry-red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        margin: 2rem;
+        width: 13rem;
+        height: 18rem;
+        background-color: white;
+        text-align: center;
+        border-radius: 15px;
+        font-size: 12rem;
+        box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+      }
+
+      .operator, .equal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        margin: .5rem;
+        height: 18rem;
+        text-align: center;
+        font-size: 8rem;
+        color: brown;
+
+      }
+
+      .user-input-form.submit-challenge-result-form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 18rem;
+
+        .user-result-input {
+          height: 75%;
+          width: 100%;
+          border-radius: 15px;
+          border: none;
+          font-size: 10rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+
+          &:focus {
+            outline: none;
+            border: none;
+            background-color: $peach-white;
+          }
+        }
+
+        .submit-button {
+          height: 2rem;
+          width: 100%;
+          border-radius: 5px;
+          background-color: $peach-orange;
+          color: $peach-white;
+          border: none;
+          margin-top: 1rem;
+          padding: 0.15rem 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $dark-peach-orange;
+          }
+
+        }
+      }
+    }
+    .game-paused-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: $cherry-red;
+      text-shadow: 3px 3px 3px lightpink;
+      font-size: 1.5rem;
+      text-align: center;
+
+      .current-scores-container {
+        display: flex;
+        justify-content: center;
+        .total-scores, .total-penalties {
+          margin: 0 5rem;
+          > h1 {
+            margin: 0;
+            font-size: 10rem;
+          }
+        }
+
+      }
+
+      .game-paused-next-challenge-button {
+        padding: 1rem 2.5rem;
+        background-color: $peach-orange;
+        color: $peach-white;
+        border-radius: 30px;
+        border: none;
+        font-size: 2rem;
+        box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+        transition: 0.3s ease;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 8px 8px 10px rgba(166, 162, 166, 0.8);
+          transform: scale(1.02);
+          background-color: $dark-peach-orange;
+        }
+
+      }
+    }
+
+    .game-difficulties-container {
+      margin-top: 5%;
+      display: flex;
+      justify-content: center;
+      .difficulty-items {
+        width: 15rem;
+        height: 15rem;
+        margin: 2rem;
+        border-radius: 30px;
+        background-color: $peach-orange;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+        transition: ease 0.3s;
+        text-align: center;
+        padding: 0.5rem;
+
+        &:hover {
+          transform: scale(1.08);
+          cursor: pointer;
+          box-shadow: 5px 5px 10px rgb(166, 162, 166);
+        }
+
+        .difficulty-title {
+          font-size: 2.75rem;
+        }
+
+        .difficulty-description {
+          font-family:  Arial, Helvetica, sans-serif;
+          font-weight: 300;
+        }
+      }
+    }
+
+  }
+
+}

@@ -53,7 +53,8 @@ const SigninPage = () => {
             }
         })
         .catch((err) => {
-            setErrorMessage(err.response.data.message);
+            console.log(err);
+            setErrorMessage("Your username doesn't exist or password was invalid");
             window.scrollTo(0, 0)
             setTimeout(()=> {
                 setErrorMessage("");

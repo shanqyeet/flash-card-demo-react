@@ -1,4 +1,5 @@
 import axios from "axios";
+import cookie from "js-cookie";
 const BACK_END_URL = "http://localhost:8080/api"
 const FRONT_END_URL = "http://localhost:3000"
 
@@ -32,5 +33,10 @@ export const userSigin = (username, password) => {
 };
 
 export const userSignout = () => {
-  localStorage.removeItem("user");
+  console.log("clearning cookies");
+  cookie.set("accessToken", null);
+  cookie.set("username", null);
+  // cookie.remove("username", {path:"/dashboard", domain:"localhost" })
+  // cookie.remove("accessToken", {path:"/dashboard", domain:"localhost" })
+  // localStorage.removeItem("user");
 };

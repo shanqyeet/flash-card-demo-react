@@ -1,5 +1,7 @@
 @import "../../common_styles/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 .dashboard-page {
+  position: relative;
   background-color: $pink-peach;
   padding: 5% 0 2rem 0;
   min-height: 100vh;
@@ -9,6 +11,8 @@
   box-sizing: content-box;
   display: flex;
   justify-content: center;
+  font-family: 'Gochi Hand', cursive;
+
   .left-container {
     width: 65%;
     display: flex;
@@ -21,15 +25,104 @@
 
   .right-container {
     width: 35%;
+    min-height: 100vh;
     display:flex;
     flex-direction: column;
-    align-items: center;
 
+    .user-avatar {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      padding: .5rem;
+      justify-content: flex-end;
+      right: 2rem;
+      top: 2rem;
+
+      .user-logout {
+
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 0.25rem 1rem; 
+        border-radius: 15px;
+        transition: 0.3s ease;
+        margin: 0.5rem;
+
+        &:hover {
+          cursor: pointer;
+          background-color: darkred;
+
+        }
+
+      }
+    }
 
 
     .start-new-game-button {
-      
+      margin-top: 5rem;
+      height: 15rem;
+      width: 15rem;
+      background-color: $dark-pink-peach;
+      border-radius: 15px;
+      box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+      transition: ease 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $peach-white;
+      font-size: 1.25rem;
+
+      > h3 {
+        margin: 0;
+        padding: .5rem;
+      }
+
+      &:hover {
+        transform: scale(1.08);
+        cursor: pointer;
+        box-shadow: 5px 5px 10px rgb(166, 162, 166);
+      }
+
+      .start-game-sticker {
+        width: 60%;
+      }
     }
+
+    .continue-game-button {
+      margin-top: 5rem;
+      height: 15rem;
+      width: 15rem;
+      background-color: $butter-yellow;
+      border-radius: 15px;
+      box-shadow: 10px 10px 20px rgba(166, 162, 166, .8);
+      transition: ease 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $peach-white;
+      font-size: 1.25rem;
+
+      > h3 {
+        margin: 0;
+        padding: .5rem;
+      }
+
+      &:hover {
+        transform: scale(1.08);
+        cursor: pointer;
+        box-shadow: 5px 5px 10px rgb(166, 162, 166);
+      }
+
+      .continue-game-sticker {
+        width: 60%;
+      }
+
+
+
+    }
+
 
   }
 

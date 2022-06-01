@@ -12,7 +12,8 @@ import { renderAvatar } from '../../adapters/boring_avatar_adapter';
 
 
 const SignupPage = (props) => {
-  let API_URL = "https://source.boringavatars.com/beam"; 
+  const apiUrl = "https://source.boringavatars.com/beam"; 
+  const defaultAvatar = `<svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><title>Lucy Stone</title><mask id="mask__beam" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#mask__beam)"><rect width="36" height="36" fill="#0c8f8f"></rect><rect x="0" y="0" width="36" height="36" transform="translate(4 4) rotate(340 18 18) scale(1.1)" fill="#ffad08" rx="36"></rect><g transform="translate(-4 -3) rotate(0 18 18)"><path d="M15 20c2 1 4 1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path><rect x="14" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="20" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg>`;
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [avatarElement, setAvatarElement] = useState("");
@@ -39,11 +40,11 @@ const SignupPage = (props) => {
   }
 
   const getAvatarOrDefault = (username) => {
-    renderAvatar(username).then(resp => {
+    renderAvatar(username, 160).then(resp => {
       if(resp.data != null) {
         setAvatarElement(resp.data);
       } else {
-        setAvatarElement("default");
+        setAvatarElement(defaultAvatar);
       }
     }) 
 
@@ -53,7 +54,7 @@ const SignupPage = (props) => {
     event.preventDefault();
     setIsLoading(true);
     let {username, password, confirmPassword} = formData;
-    let avatarUrl = API_URL + "/160/" + username;
+    let avatarUrl = apiUrl+ "/160/" + username;
 
     await userSignup(username, password, confirmPassword, avatarUrl)
       .then((response) => {
